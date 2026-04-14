@@ -121,9 +121,7 @@ def run(args: argparse.Namespace) -> int:
             history = weather_client.get_daily_observations(coordinates[0], coordinates[1], start, normalized.target_date)
         baseline = model.estimate(normalized, history)
 
-        yes_token = next((t for t in market.tokens if t.outcome.lower() in {"yes", "yes "}), None)
-        if yes_token is None and market.tokens:
-            yes_token = market.tokens[0]
+        yes_token = next((t for t in market.tokens if t.outcome.strip().lower() == "yes"), None)
         if yes_token is None:
             continue
 
