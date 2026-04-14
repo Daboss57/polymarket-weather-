@@ -1,0 +1,24 @@
+[
+  {
+    "id": "sample-nyc-high-1",
+    "question": "Will the high temperature in New York on 2025-07-04 be over 85F?",
+    "slug": "nyc-high-over-85-july-4-2025",
+    "endDate": "2025-07-04T23:59:59Z",
+    "tokens": [
+      {"token_id": "sample-token-yes-1", "outcome": "Yes"},
+      {"token_id": "sample-token-no-1", "outcome": "No"}
+    ],
+    "active": false
+  },
+  {
+    "id": "sample-chicago-low-1",
+    "question": "Will the low temp in Chicago on 2025-01-20 be under 15F?",
+    "slug": "chicago-low-under-15-jan-20-2025",
+    "endDate": "2025-01-20T23:59:59Z",
+    "tokens": [
+      {"token_id": "sample-token-yes-2", "outcome": "Yes"},
+      {"token_id": "sample-token-no-2", "outcome": "No"}
+    ],
+    "active": false
+  }
+]
