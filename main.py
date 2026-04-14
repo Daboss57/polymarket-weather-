@@ -21,6 +21,8 @@ from features.baseline_model import HistoricalBaselineModel, training_window
 from utils.logging_utils import configure_logging
 
 LOGGER = logging.getLogger(__name__)
+BASE_DIR = Path(__file__).resolve().parent
+SAMPLE_DATA_DIR = BASE_DIR / "data"
 
 
 def load_sample_price_history(path: Path) -> dict[str, list[PricePoint]]:
@@ -92,10 +94,10 @@ def run(args: argparse.Namespace) -> int:
     )
 
     if args.sample:
-        raw_markets = json.loads(Path("data/sample_markets.json").read_text())
+        raw_markets = json.loads((SAMPLE_DATA_DIR / "sample_markets.json").read_text())
         markets = polymarket_client.parse_raw_markets(raw_markets)
-        sample_prices = load_sample_price_history(Path("data/sample_price_history.json"))
-        sample_weather = load_sample_weather(Path("data/sample_weather.json"))
+        sample_prices = load_sample_price_history(SAMPLE_DATA_DIR / "sample_price_history.json")
+        sample_weather = load_sample_weather(SAMPLE_DATA_DIR / "sample_weather.json")
     else:
         markets = polymarket_client.fetch_markets(limit=args.limit)
         markets = polymarket_client.filter_weather_markets(markets)
