@@ -54,17 +54,23 @@ def load_sample_weather(path: Path) -> dict[str, list[WeatherObservation]]:
         ]
     return parsed
 
-def infer_resolved_yes(contract, observations) -> bool:
+def infer_resolved_yes(contract, observations) -> bool | None:
     target = next((obs for obs in observations if obs.date == contract.target_date), None)
     if target is None:
-        return False
-    if contract.metric_type == MetricType.DAILY_HIGH_F and target.max_temp_f is not None and contract.threshold is not None:
+        return None
+    if contract.metric_type == MetricType.DAILY_HIGH_F:
+        if target.max_temp_f is None or contract.threshold is None:
+            return None
         return target.max_temp_f >= contract.threshold if contract.direction == Direction.ABOVE else target.max_temp_f < contract.threshold
-    if contract.metric_type == MetricType.DAILY_LOW_F and target.min_temp_f is not None and contract.threshold is not None:
+    if contract.metric_type == MetricType.DAILY_LOW_F:
+        if target.min_temp_f is None or contract.threshold is None:
+            return None
         return target.min_temp_f >= contract.threshold if contract.direction == Direction.ABOVE else target.min_temp_f < contract.threshold
     if contract.metric_type == MetricType.RAIN_YES_NO:
-        return bool((target.precipitation_mm or 0.0) > 0.0)
-    return False
+        if target.precipitation_mm is None:
+            return None
+        return target.precipitation_mm > 0.0
+    return None
 
 
 def run(args: argparse.Namespace) -> int:
@@ -124,6 +130,14 @@ def run(args: argparse.Namespace) -> int:
             continue
 
         resolved_yes = infer_resolved_yes(normalized, history)
+        if resolved_yes is None:
+            LOGGER.warning(
+                "Skipping market %s: could not infer resolution for %s on %s",
+                market.market_id,
+                normalized.location,
+                normalized.target_date,
+            )
+            continue
         backtest_inputs.append(
             MarketBacktestInput(
                 market_id=market.market_id,
