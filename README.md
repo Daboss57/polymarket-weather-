@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 ### 1) End-to-end sample run (recommended first)
 
-This mode uses local market/price fixtures and live Open-Meteo weather history.
+This mode is fully offline and uses local fixtures for markets, prices, and weather.
 
 ```bash
 python main.py --sample --log-level INFO
