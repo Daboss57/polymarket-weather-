@@ -155,7 +155,7 @@ def run(args: argparse.Namespace) -> int:
     export_csv(cfg.output_dir / "trades.csv", trade_rows)
 
     summary = asdict(result.summary)
-    export_json(cfg.output_dir / "summary.json", [summary])
+    export_json(cfg.output_dir / "summary.json", summary)
 
     LOGGER.info("Backtest complete: %s", summary)
     print(json.dumps(summary, indent=2, default=str))
