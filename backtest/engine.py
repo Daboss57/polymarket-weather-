@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
-from datetime import datetime
 
 from backtest.metrics import BacktestSummary, summarize_trades
 from backtest.portfolio import Portfolio, TradeRecord
@@ -63,5 +62,5 @@ class BacktestEngine:
                     portfolio.close_yes(market.market_id, point.timestamp, point.yes_price)
 
         if market.market_id in portfolio.positions:
-            settlement_ts = market.price_history[-1].timestamp if market.price_history else datetime.utcnow()
+            settlement_ts = market.price_history[-1].timestamp
             portfolio.settle_yes(market.market_id, settlement_ts, market.resolved_yes)
