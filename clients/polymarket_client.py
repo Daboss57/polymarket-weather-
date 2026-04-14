@@ -76,10 +76,20 @@ class PolymarketClient:
                     end_datetime = datetime.fromisoformat(str(item[key]).replace("Z", "+00:00"))
                     break
 
+            market_id = str(item.get("id") or item.get("conditionId") or "").strip()
+            question = str(item.get("question") or "").strip()
+            if not market_id or not question:
+                LOGGER.debug(
+                    "Skipping market payload missing required fields: market_id=%r question=%r",
+                    market_id,
+                    question,
+                )
+                return None
+
             tokens = self._parse_tokens(item)
             return Market(
-                market_id=str(item.get("id") or item.get("conditionId") or ""),
-                question=str(item.get("question") or "").strip(),
+                market_id=market_id,
+                question=question,
                 slug=item.get("slug"),
                 end_datetime=end_datetime,
                 resolution_source=item.get("resolutionSource"),
