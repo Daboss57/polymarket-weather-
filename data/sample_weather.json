@@ -1,0 +1,22 @@
+{
+  "New York": [
+    {"date": "2018-07-02", "max_temp_f": 82.0, "min_temp_f": 70.0, "precipitation_mm": 0.0},
+    {"date": "2019-07-03", "max_temp_f": 88.0, "min_temp_f": 72.0, "precipitation_mm": 0.0},
+    {"date": "2020-07-04", "max_temp_f": 91.0, "min_temp_f": 75.0, "precipitation_mm": 0.0},
+    {"date": "2021-07-05", "max_temp_f": 84.0, "min_temp_f": 71.0, "precipitation_mm": 1.0},
+    {"date": "2022-07-06", "max_temp_f": 89.0, "min_temp_f": 73.0, "precipitation_mm": 0.0},
+    {"date": "2023-07-04", "max_temp_f": 87.0, "min_temp_f": 72.0, "precipitation_mm": 0.0},
+    {"date": "2024-07-04", "max_temp_f": 86.0, "min_temp_f": 70.0, "precipitation_mm": 0.0},
+    {"date": "2025-07-04", "max_temp_f": 90.0, "min_temp_f": 74.0, "precipitation_mm": 0.0}
+  ],
+  "Chicago": [
+    {"date": "2018-01-18", "max_temp_f": 28.0, "min_temp_f": 13.0, "precipitation_mm": 0.0},
+    {"date": "2019-01-19", "max_temp_f": 24.0, "min_temp_f": 10.0, "precipitation_mm": 0.0},
+    {"date": "2020-01-20", "max_temp_f": 26.0, "min_temp_f": 9.0, "precipitation_mm": 1.0},
+    {"date": "2021-01-21", "max_temp_f": 21.0, "min_temp_f": 11.0, "precipitation_mm": 0.0},
+    {"date": "2022-01-22", "max_temp_f": 33.0, "min_temp_f": 17.0, "precipitation_mm": 0.0},
+    {"date": "2023-01-20", "max_temp_f": 25.0, "min_temp_f": 14.0, "precipitation_mm": 0.0},
+    {"date": "2024-01-20", "max_temp_f": 19.0, "min_temp_f": 7.0, "precipitation_mm": 0.0},
+    {"date": "2025-01-20", "max_temp_f": 22.0, "min_temp_f": 12.0, "precipitation_mm": 0.0}
+  ]
+}

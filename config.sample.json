@@ -1,0 +1,21 @@
+{
+  "polymarket": {
+    "gamma_base_url": "https://gamma-api.polymarket.com",
+    "clob_base_url": "https://clob.polymarket.com",
+    "request_timeout_seconds": 20,
+    "max_markets": 250
+  },
+  "openmeteo": {
+    "archive_base_url": "https://archive-api.open-meteo.com/v1/archive",
+    "forecast_base_url": "https://api.open-meteo.com/v1/forecast",
+    "geocode_base_url": "https://geocoding-api.open-meteo.com/v1/search",
+    "request_timeout_seconds": 20
+  },
+  "backtest": {
+    "entry_edge": 0.08,
+    "exit_edge": 0.02,
+    "max_position_notional": 100.0,
+    "seasonal_window_days": 7,
+    "lookback_years": 8
+  }
+}
